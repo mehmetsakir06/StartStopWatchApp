@@ -1,6 +1,5 @@
 import React, { useState, useRef } from 'react';
 
-
 function StartStop() {
 
     const [counter, setCounter] = useState(0);
@@ -20,26 +19,24 @@ function StartStop() {
         setResume(true);
     };
 
-
+    const resetButton = () => {
+        setCounter(0);
+        setResume(false);
+    }
 
     const countms = Math.floor((counter % 100));
     const countsec = Math.floor(counter / (100) % 60);
     const countmin = Math.floor(counter / (100 * 60) % 60);
     const counthr = Math.floor(counter / (100 * 60 * 60));
 
-
-
-
     return (
         <div className='container' >
             <h1>Stopwatch</h1>
             <div className='stopWatch'>
-
                 <div>{(counthr >= 10) ? counthr : "0" + counthr} <sub>hr</sub>  : </div>
                 <div>{(countmin >= 10) ? countmin : "0" + countmin} <sub>min</sub>  :</div>
                 <div>{(countsec >= 10) ? countsec : "0" + countsec} <sub>sec</sub>  :</div>
                 <div>{(countms >= 10) ? countms : "0" + countms} <sub>ms</sub> </div>
-
             </div>
             <div className='buttonFunction'>
                 <button className='startButton' onClick={startButton} >{resume ? "Resume" : "Start"}</button>
